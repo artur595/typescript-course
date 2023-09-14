@@ -1,6 +1,5 @@
 "use strict";
-// // @ts-ignore
-//
+// @ts-ignore
 // let num: number = 5;
 //
 // num = 55
@@ -116,11 +115,11 @@
 //     quantity: 5,
 // }
 //
-// const calculateTotalPrice = (product: Product) => {
-//     return `${product.name} total cost ${product.price * product.quantity}`
-// }
-//
-// console.log(calculateTotalPrice(product));
+// // const calculateTotalPrice = (product: Product) => {
+// //     return `${product.name} total cost ${product.price * product.quantity}`
+// // }
+// //
+// // console.log(calculateTotalPrice(product));
 //
 //
 // type Student = {
@@ -200,18 +199,18 @@
 // displayPersonInfo(person2)
 //
 //
-// const userInput: (value: string | number) => void = (value: string | number) => {
-//     if (typeof value === 'number') {
-//         return value * 2;
-//     } else if (typeof value === 'string') {
-//         return value.toUpperCase();
-//     } else {
-//         throw new Error('Invalid input data')
-//     }
-// }
-//
-//
-// console.log(userInput(10));
+// // const userInput: (value: string | number) => void = (value: string | number) => {
+// //     if (typeof value === 'number') {
+// //         return value * 2;
+// //     } else if (typeof value === 'string') {
+// //         return value.toUpperCase();
+// //     } else {
+// //         throw new Error('Invalid input data')
+// //     }
+// // }
+// //
+// //
+// // console.log(userInput(10));
 //
 // function add<T, U>(a: T, b: U): void {
 //     console.log(typeof a)
@@ -245,54 +244,173 @@
 //     return price * quantity;
 // }
 //
-// console.log(calculateTotalPrice(product1))
-// console.log(calculateTotalPrice(product2))
+// console.log(calculateTotalPrice(product1));
+// console.log(calculateTotalPrice(product2));
 // class Persons {
 //     // public name: string;
 //     // public age: number;
 //     // private hobbies: string[];
-//     constructor(name, age, hobbies) {
-//         this.name = name;
-//         this.age = age;
-//         this.hobbies = hobbies;
+//
+//     constructor(
+//         public name: string,
+//         public age: number,
+//         protected hobbies: string[]
+//     ) {
 //     }
-//     introduceParent() {
-//         return `Hi, Im ${this.name} and Im ${this.age} years old I love ${this.hobbies.join(', ')}.;`;
+//
+//     introduceParent(): string {
+//         return `Hi, Im ${this.name} and Im ${this.age} years old I love ${this.hobbies.join(', ')}.;`
 //     }
+//
 //     // introduce(): string {
 //     //     return `Hi, Im ${this.name} and Im ${this.age} years old I love ${this.hobbies.join(', ')}.;`
 //     // }
-//     introduce() {}
+//     introduce() {
+//
+//     }
 // }
 // class Students extends Persons {
-//     constructor(name, age, hobbies, grade) {
+//     constructor(
+//         name: string,
+//         age: number,
+//         hobbies: string[],
+//         public grade: number,
+//     ) {
 //         super(name, age, hobbies);
-//         this.grade = grade;
 //     }
+//
 //     // introduce(): string {
 //     //     return `Hi, Im ${this.name} and Im ${this.age} years old, I am in grade ${this.grade} I love ${this.hobbies.join(', ')}.;`
 //     // }
-//     introduce() {
+//
+//     introduce(): string[] {
 //         return this.hobbies;
 //     }
 // }
-// const person1 = new Persons('Test1', 12, ['reading', 'painting']);
-// const students1 = new Students('Test3', 16, ['reading', 'painting'], 15);
-// console.log(person1.introduceParent());
-// console.log(students1.introduce());
-
-
-// class Persons {
-//     constructor(
-//       public name: string,
-//     public age: number,
-//     private hobbies: string[],
-//     )
-// }
-// // introduceParent():string{
-// //         // return Hi, Im ${this.name} and Im ${this.age} years old, I love ${this.hobbies.join(', ')}.;`
-// // }
+// const person1: Persons = new Persons('Test1', 12, ['reading', 'painting']);
 //
-// const person1 : Persons = new Persons('Test', 22, ['Pending', 'reading']);
-//
+// const students1: Persons = new Students(
+//     'Test3',
+//     16,
+//     ['reading', 'painting'],
+//     15);
 // console.log(person1.introduceParent())
+// console.log(students1.introduce())
+class Persons {
+    constructor(name, hobbies) {
+        this.name = name;
+        this.hobbies = hobbies;
+    }
+    set age(age) {
+        if (age > 150 || age < 0) {
+            throw new Error('age is not valid');
+        }
+        this._age = age;
+    }
+    get age() {
+        if (this._age === undefined) {
+            throw new Error('age is not valid');
+        }
+        return this._age;
+    }
+    introduceParent() {
+        return `Hi, Im ${this.name} and Im ${this._age} years old, I love ${this.hobbies.join(',')}.`;
+    }
+}
+const persons1 = new Persons('test', ['reading', 'painting']);
+persons1.age = 12;
+console.log(persons1.introduceParent());
+class BankAccount {
+    constructor() {
+        this._balance = 0;
+    }
+    get balance() {
+        return this._balance;
+    }
+    set balance(newBalance) {
+        if (newBalance < 0) {
+            throw new Error('Invalid balance');
+        }
+        this._balance = newBalance;
+    }
+}
+const account = new BankAccount();
+account.balance = 10;
+console.log(account.balance);
+class Temperature {
+    constructor() {
+        this._celsius = 0;
+    }
+    get celsius() {
+        return this._celsius;
+    }
+    set celsius(newCelsius) {
+        this._celsius = newCelsius;
+    }
+    get fahrenheit() {
+        return (this._celsius * 9) / 5 + 32;
+    }
+    set fahrenheit(newFah) {
+        this._celsius = (newFah - 32 * 5) / 9;
+    }
+}
+const temp = new Temperature();
+temp.celsius = 25;
+console.log(temp.fahrenheit);
+temp.fahrenheit = 177;
+console.log(temp.celsius);
+class MathOperations {
+    static add(num1, num2) {
+        return num1 + num2;
+    }
+    static subs(num1, num2) {
+        return num1 - num2;
+    }
+}
+MathOperations.PI = Math.PI;
+console.log(MathOperations.PI);
+console.log(MathOperations.add(5, 10));
+console.log(MathOperations.subs(10, 5));
+// interface PerObj {
+//     name: string,
+//     age: number,
+// }
+//
+// const Person: PerObj = {
+//     name: 'Test',
+//     age: 28,
+// }
+// const Person1: PerObj = {
+//     name: 'Test1',
+//     age: 26,
+// }
+// const Person2: PerObj = {
+//     name: 'Test2',
+//     age: 25,
+// }
+class Shape {
+    constructor(color) {
+        this.color = color;
+    }
+}
+class Circle extends Shape {
+    constructor(color, radius) {
+        super(color);
+        this.color = color;
+        this.radius = radius;
+        this.displayArea = () => {
+            console.log(`This is a ${this.color} circle with radius ${this.radius}`);
+        };
+    }
+    calculateArea() {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+const circle = new Circle('red', 5);
+console.log(circle.calculateArea());
+circle.displayArea();
+const BioData = {
+    name: 'Test',
+    age: 28,
+};
+console.log(BioData);
