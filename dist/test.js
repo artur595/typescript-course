@@ -409,8 +409,78 @@ class Circle extends Shape {
 const circle = new Circle('red', 5);
 console.log(circle.calculateArea());
 circle.displayArea();
-const BioData = {
-    name: 'Test',
-    age: 28,
-};
-console.log(BioData);
+// type Stud = {
+//     name: string;
+//     age: number;
+// }
+//
+// type StudAddr = {
+//     city: string;
+//     state: string;
+// }
+//
+// const BioData: Stud | StudAddr = {
+//     name: 'Test',
+//     age: 28,
+//     city: 'Yerevan',
+//     state: 'AM',
+// };
+//
+// console.log(BioData);
+// interface Stud  {
+//     name: string;
+//     age: number;
+// }
+//
+// interface StudAddr  {
+//     city: string;
+//     state: string;
+// }
+//
+// interface Data extends Stud , StudAddr {}
+//
+// const BioData: Data = {
+//     name: 'Test',
+//     age: 93,
+//     city: 'Yerevan',
+//     state: 'AM',
+// };
+//
+// console.log(BioData);
+// interface Stud {
+//     name: string;
+//     age: number;
+// }
+//
+// interface StudAddr {
+//     city: string;
+//     state: string;
+// }
+//
+// interface Data extends Stud, StudAddr {
+// }
+//
+// class BioData implements Data {
+//     constructor(
+//         public name: string,
+//         public age: number,
+//         public city: string,
+//         public state: string,
+//     ) {
+//     }
+// }
+//
+// const sdt1 = new BioData('Test1', 29, 'Lori', 'am');
+//
+// console.log(sdt1);
+// const favHobbies: (hobby: string) => void = (hobby: string | string[]): void => {
+//     if (typeof hobby === 'object' && Array.isArray(hobby)) {
+//         return hobby.map((): void => {
+//         })
+//     } else {
+//         console.log(hobby)
+//     }
+// }
+//
+// favHobbies('coding');
+// favHobbies(['coding', 'games'])

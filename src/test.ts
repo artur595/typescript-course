@@ -490,32 +490,32 @@ circle.displayArea();
 //
 // console.log(BioData);
 
-interface Stud {
-    name: string;
-    age: number;
-}
-
-interface StudAddr {
-    city: string;
-    state: string;
-}
-
-interface Data extends Stud, StudAddr {
-}
-
-class BioData implements Data {
-    constructor(
-        public name: string,
-        public age: number,
-        public city: string,
-        public state: string,
-    ) {
-    }
-}
-
-const sdt1 = new BioData('Test1', 29, 'Lori', 'am');
-
-console.log(sdt1);
+// interface Stud {
+//     name: string;
+//     age: number;
+// }
+//
+// interface StudAddr {
+//     city: string;
+//     state: string;
+// }
+//
+// interface Data extends Stud, StudAddr {
+// }
+//
+// class BioData implements Data {
+//     constructor(
+//         public name: string,
+//         public age: number,
+//         public city: string,
+//         public state: string,
+//     ) {
+//     }
+// }
+//
+// const sdt1 = new BioData('Test1', 29, 'Lori', 'am');
+//
+// console.log(sdt1);
 
 
 // const favHobbies: (hobby: string) => void = (hobby: string | string[]): void => {
